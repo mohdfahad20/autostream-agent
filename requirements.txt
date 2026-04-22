@@ -1,0 +1,27 @@
+# Core LLM & Agent Framework
+langchain==0.3.25
+langchain-core==0.3.59
+langchain-community==0.3.23
+langgraph==0.4.1
+
+# Gemini
+google-genai
+
+# Embeddings (local, HF)
+sentence-transformers==3.0.1
+langchain-huggingface
+
+# Vector store
+faiss-cpu==1.10.0
+
+# Utilities
+python-dotenv==1.1.0
+
+# Streamlit UI
+streamlit==1.45.0
+ 
+# Retry logic
+tenacity==9.1.2
+
+# Data
+pandas==2.2.3

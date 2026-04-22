@@ -1,0 +1,18 @@
+# Environment
+.env
+venv/
+
+# Auto-generated (will rebuild on first run)
+faiss_index/
+data/
+logs/
+
+# Python cache
+__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+
+# OS
+.DS_Store
+Thumbs.db
