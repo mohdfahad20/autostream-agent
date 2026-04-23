@@ -79,17 +79,17 @@ python main.py
 
 ---
 
-## 🏗️ Architecture Explanation (~200 words)
+## 🏗️ Architecture Explanation 
 
-The agent is built on **LangGraph**, chosen over AutoGen for its explicit state graph model — each conversation turn flows through defined nodes with typed state, making the pipeline transparent, debuggable, and easy to extend.
+The agent is built on **LangGraph**, chosen over AutoGen for its explicit state graph model each conversation turn flows through defined nodes with typed state, making the pipeline transparent, debuggable, and easy to extend.
 
-The graph has four nodes: **Intent Classifier**, **Response Agent**, **Lead Collector**, and **Lead Capture**. Every user message enters at the classifier, which uses Gemini 2.5 Flash to label intent as `greeting`, `inquiry`, or `high_intent`. Conditional edges then route to the correct node — greetings and inquiries go to the Response Agent (RAG-powered), while high-intent signals route to the Lead Collector.
+The graph has four nodes: **Intent Classifier**, **Response Agent**, **Lead Collector**, and **Lead Capture**. Every user message enters at the classifier, which uses Gemini 2.5 Flash to label intent as `greeting`, `inquiry`, or `high_intent`. Conditional edges then route to the correct node greetings and inquiries go to the Response Agent (RAG-powered), while high-intent signals route to the Lead Collector.
 
-**State management** is handled by a `TypedDict`-based `AgentState` that persists across all turns via LangGraph's `add_messages` reducer. This retains the full conversation history, all collected lead fields, intent progression, and session metadata — across 5–6+ turns with zero manual memory management.
+**State management** is handled by a `TypedDict`-based `AgentState` that persists across all turns via LangGraph's `add_messages` reducer. This retains the full conversation history, all collected lead fields, intent progression, and session metadata across 5–6+ turns with zero manual memory management.
 
-**RAG** uses HuggingFace `all-MiniLM-L6-v2` embeddings with a FAISS vector store, built once from a local Markdown knowledge base and cached to disk. The retriever fetches the top 3 relevant chunks per query, which are injected into the LLM prompt as context — ensuring answers are grounded in actual product data, not hallucinated.
+**RAG** uses HuggingFace `all-MiniLM-L6-v2` embeddings with a FAISS vector store, built once from a local Markdown knowledge base and cached to disk. The retriever fetches the top 3 relevant chunks per query, which are injected into the LLM prompt as context ensuring answers are grounded in actual product data, not hallucinated.
 
-All events — messages, intents, leads, session outcomes — are persisted to a **SQLite database** with four relational tables, queryable via the password-protected Admin Panel.
+All events messages, intents, leads, session outcomes — are persisted to a **SQLite database** with four relational tables, queryable via the password-protected Admin Panel.
 
 ---
 
@@ -162,7 +162,7 @@ async def webhook(request: Request):
 - Store `AgentState` in Redis or a database so conversations survive server restarts
 - Each phone number maintains its own independent LangGraph state
 
-**4. Deploy** the FastAPI server on any cloud provider (Railway, Render, AWS, GCP) with HTTPS — required by Meta for webhook delivery.
+**4. Deploy** the FastAPI server on any cloud provider (Railway, Render, AWS, GCP) with HTTPS required by Meta for webhook delivery.
 
 ---
 
@@ -212,7 +212,7 @@ Features:
 
 ## 🎬 Demo Video
 
-[Link to demo video — add before submission]
+[Demo Video Link](https://www.loom.com/share/c37ef89596d74a728a203439b5914c97)
 
 The demo covers:
 1. Agent answering a pricing question via RAG
